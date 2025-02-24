@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('background.jpg') no-repeat center center/cover;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 60%;
+    margin: auto;
+    background: white;
+    padding: 2rem;
+    margin-top: 5rem;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+h1 {
+    color: #004080;
+}
+.form-group {
+    text-align: left;
+    margin: 1rem 0;
+}
+label, input, select {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+}
+.book-btn, .search-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+    background: #004080;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.book-btn:hover, .search-btn:hover {
+    background: #002d5b;
+}
+.ticket {
+    display: none;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: left;
+}

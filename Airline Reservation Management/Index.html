@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Reservation System</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <header>
+
+        <nav>
+            <div class="logo">AirlineX</div>
+            <ul class="nav-links">
+                <li><a  href="about us.html">About Us</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#flights">Flights</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="login.html">Login / Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h1>Book Your Next Adventure</h1>
+        <p>Find and book the best flights at the best prices</p>
+        <button onclick="openSearch()">Search Flights</button>
+    </section>
+    
+    <section class="search-form" id="search-form">
+        <h2>Find Your Flight</h2>
+        <form>
+            <input type="text" placeholder="From" required>
+            <input type="text" placeholder="To" required>
+            <input type="date" required>
+            <input type="date" required>
+            <button type="submit">Search</button>
+        </form>
+    </section>
+    
+    <section class="destinations" id="destinations">
+        <h2>Popular Destinations</h2>
+        <div class="destination-list">
+            <div class="destination">Paris</div>
+            <div class="destination">New York</div>
+            <div class="destination">Tokyo</div>
+            <div class="destination">Dubai</div>
+        </div>
+    </section>
+    <section class="about" id="about">
+        <h3>About Us</h3>
+        <p>Our Airline Reservation System is a user-friendly platform designed to streamline flight booking and management for passengers and airlines alike. 
+            This system allows travelers to search for flights, compare fares, and book tickets with ease. It offers secure user authentication, real-time availability updates, and multiple payment options to ensure a seamless experience.
+             Airlines benefit from efficient passenger management, automated booking confirmations, and comprehensive reporting tools. 
+             With a focus on convenience and reliability, our system enhances the overall travel experience by making flight reservations simple, fast, and secure.</p>
+    </section>
+    <section class="Contact" id="contact">
+        <h4>Contact</h4>
+        <p></p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 AirlineX. All rights reserved.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>

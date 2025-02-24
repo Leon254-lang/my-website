@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flights</title>
+    <link rel="stylesheet" href="Flights.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Available Flights</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Flight Number</th>
+                    <th>Departure</th>
+                    <th>Destination</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Seats Available</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody id="flightTableBody">
+                <tr>
+                    <td>AA123</td>
+                    <td>New York</td>
+                    <td>Miami</td>
+                    <td>2025-03-15</td>
+                    <td>10:00 AM</td>
+                    <td><span id="status-AA123">Scheduled</span></td>
+                    <td><span id="seats-AA123">100</span></td>
+                    <td><button class="select-btn" onclick="selectFlight('AA123')">Select</button></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div id="adminControls" class="admin-controls">
+            <h2>Admin Panel</h2>
+            <input type="text" id="flightNumber" placeholder="Flight Number">
+            <input type="text" id="departure" placeholder="Departure">
+            <input type="text" id="destination" placeholder="Destination">
+            <input type="date" id="date">
+            <input type="time" id="time">
+            <input type="number" id="seats" placeholder="Seats Available">
+            <button class="select-btn" onclick="addFlight()">Add Flight</button>
+            <br><br>
+            <h3>Update Flight Status</h3>
+            <input type="text" id="statusFlightNumber" placeholder="Flight Number">
+            <select id="flightStatus">
+                <option value="Scheduled">Scheduled</option>
+                <option value="Delayed">Delayed</option>
+                <option value="Canceled">Canceled</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <button class="admin-btn" onclick="updateFlightStatus()">Update Status</button>
+        </div>
+    </div>
+    <script>
+        let isAdmin = true; // Set to true for admin access
+
+        document.addEventListener("DOMContentLoaded", function() {
+            if (isAdmin) {
+                document.getElementById("adminControls").style.display = "block";
+            }
+        });
+
+        function selectFlight(flightNumber) {
+            const seatElement = document.getElementById(`seats-${flightNumber}`);
+            let seatsAvailable = parseInt(seatElement.textContent);
+            if (seatsAvailable > 0) {
+                seatsAvailable--;
+                seatElement.textContent = seatsAvailable;
+                alert("You have selected flight " + flightNumber);
+                window.location.href = 'payment.html?flight=' + encodeURIComponent(flightNumber);
+            } else {
+                alert("No seats available for this flight.");
+            }
+        }
+
+        function addFlight() {
+            const flightNumber = document.getElementById("flightNumber").value;
+            const departure = document.getElementById("departure").value;
+            const destination = document.getElementById("destination").value;
+            const date = document.getElementById("date").value;
+            const time = document.getElementById("time").value;
+            const seats = document.getElementById("seats").value;
+
+            if (!flightNumber || !departure || !destination || !date || !time || !seats) {
+                alert("Please fill all fields.");
+                return;
+            }
+
+            const tableBody = document.getElementById("flightTableBody");
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${flightNumber}</td>
+                <td>${departure}</td>
+                <td>${destination}</td>
+                <td>${date}</td>
+                <td>${time}</td>
+                <td><span id="status-${flightNumber}">Scheduled</span></td>
+                <td><span id="seats-${flightNumber}">${seats}</span></td>
+                <td><button class="select-btn" onclick="selectFlight('${flightNumber}')">Select</button></td>
+            `;
+            tableBody.appendChild(row);
+            
+            alert("Flight added successfully!");
+        }
+
+        function updateFlightStatus() {
+            const flightNumber = document.getElementById("statusFlightNumber").value;
+            const status = document.getElementById("flightStatus").value;
+            
+            const statusElement = document.getElementById(`status-${flightNumber}`);
+            if (statusElement) {
+                statusElement.textContent = status;
+                alert(`Status updated for flight ${flightNumber} to ${status}`);
+            } else {
+                alert("Flight not found.");
+            }
+        }
+    </script>
+</body>
+</html>
+
